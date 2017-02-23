@@ -52,7 +52,9 @@ Because of this, we need to modify the Crossbar.io node configuration:
 In the Web transport, insted of 8080, we configure the value "$PORT". This will make Crossbar.io read the value dynamically upon startup from the environment variable.
 Since the main transport is now listening on a dynamic port, we start a second (WebSocket) transport on our router on fixed port 9000 for the container worker to connect to
 Here is a complete, working configuration:
+(This config is outdated. Uses version 1 when version 2 is required)
 
+```
 {
     "controller": {
     },
@@ -133,6 +135,7 @@ Here is a complete, working configuration:
        }
     ]
 }
+```
 What you get¶
 
 When you Heroku app is started, you should be able to access the generated "Hello, world" Crossbar.io demo application like
