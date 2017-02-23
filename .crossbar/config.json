@@ -33,7 +33,7 @@
                 "type": "websocket",
                 "endpoint": {
                    "type": "tcp",
-                   "port": 8080
+                   "port": 9000
                 }
              },
              {
@@ -70,7 +70,7 @@
                    "endpoint": {
                       "type": "tcp",
                       "host": "127.0.0.1",
-                      "port": 8080
+                      "port": 9000
                   }
                 }
              }
