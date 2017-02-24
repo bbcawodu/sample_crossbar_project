@@ -5,8 +5,18 @@ try {
    // be included without a module system
 }
 
+// dynamic connection uri based on file location
+var wsuri;
+if (document.location.origin == "file://") {
+   wsuri = "ws://127.0.0.1:8080/ws";
+
+} else {
+   wsuri = (document.location.protocol === "http:" ? "ws:" : "wss:") + "//" +
+               document.location.host + "/ws";
+}
+
 var connection = new autobahn.Connection({
-   url: 'ws://127.0.0.1:8080/ws',
+   url: wsuri,
    realm: 'realm1'}
 );
 
