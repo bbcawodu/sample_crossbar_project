@@ -66,7 +66,7 @@
             "components": [
                 {
                     "type": "class",
-                    "classname": "hello_pkg.AppSession",
+                    "classname": "examples.hello_pkg.AppSession",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -90,7 +90,7 @@
             "components": [
                 {
                     "type": "class",
-                    "classname": "basic_pubsub.backend.Component",
+                    "classname": "examples.pubsub_protocol.basic.backend.Component",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -114,7 +114,7 @@
             "components": [
                 {
                     "type": "class",
-                    "classname": "complex_pubsub.backend.Component",
+                    "classname": "examples.pubsub_protocol.complex.backend.Component",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -138,7 +138,7 @@
             "components": [
                 {
                     "type": "class",
-                    "classname": "options_pubsub.backend.Component",
+                    "classname": "examples.pubsub_protocol.options.backend.Component",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
