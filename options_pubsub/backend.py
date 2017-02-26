@@ -24,51 +24,49 @@
 #
 ###############################################################################
 
-from os import environ
+from __future__ import print_function
 
-from twisted.internet import reactor
+from os import environ
 from twisted.internet.defer import inlineCallbacks
 
-from autobahn.wamp.types import SubscribeOptions
+from autobahn.wamp.types import PublishOptions
+from autobahn.twisted.util import sleep
 from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 
 
 class Component(ApplicationSession):
-
     """
-    An application component that subscribes and receives events
-    of no payload and of complex payload, and stops after 5 seconds.
+    An application component that publishes an event every second.
     """
 
     @inlineCallbacks
     def onJoin(self, details):
         print("session attached")
 
-        self.received = 0
+        def on_event(i):
+            print("Got event: {}".format(i))
 
-        def on_heartbeat(details=None):
-            print("heartbeat (publication ID {})".format(details.publication))
+        yield self.subscribe(on_event, u'com.myapp.topic1')
 
-        yield self.subscribe(
-            on_heartbeat, u'com.complex-pubsub-example.heartbeat',
-            options=SubscribeOptions(details_arg='details')
-        )
-
-        def on_topic2(a, b, c=None, d=None):
-            print("Got event: {} {} {} {}".format(a, b, c, d))
-
-        yield self.subscribe(on_topic2, u'com.complex-pubsub-example.topic2')
-
-        reactor.callLater(5, self.leave)
-
-    def onDisconnect(self):
-        print("disconnected")
-        reactor.stop()
+        counter = 0
+        while True:
+            print("publish: com.options-pubsub-example.topic1", counter)
+            pub_options = PublishOptions(
+                acknowledge=True,
+                exclude_me=False
+            )
+            publication = yield self.publish(
+                u'com.options-pubsub-example.topic1', counter,
+                options=pub_options,
+            )
+            print("Published with publication ID {}".format(publication.id))
+            counter += 1
+            yield sleep(1)
 
 
-if __name__ == '__main__':
-    runner = ApplicationRunner(
-        environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
-        u"realm1",
-    )
-    runner.run(Component)
+# if __name__ == '__main__':
+#     runner = ApplicationRunner(
+#         environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
+#         u"crossbardemo",
+#     )
+#     runner.run(Component)

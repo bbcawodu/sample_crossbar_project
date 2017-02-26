@@ -33,7 +33,7 @@ connection.onopen = function (session) {
       }
    }
 
-   session.subscribe('com.myapp.topic1', onevent1);
+   session.subscribe('com.basic-pubsub-example.topic1', onevent1);
 };
 
 connection.open();

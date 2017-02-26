@@ -15,29 +15,26 @@ if (document.location.origin == "file://") {
                document.location.host + "/ws";
 }
 
-// Connect to crossbar router component via WAMP protocol
 var connection = new autobahn.Connection({
    url: wsuri,
    realm: 'realm1'}
 );
-
-function randint(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
 connection.onopen = function (session) {
 
    var counter = 0;
 
    setInterval(function () {
-      session.publish('com.complex-pubsub-example.heartbeat');
 
-      var obj = {'counter': counter, 'foo': [1, 2, 3]};
-      session.publish('com.complex-pubsub-example.topic2', [randint(0, 100), 23], {c: "Hello", d: obj});
+      var options = {acknowledge: true};
+
+      session.publish('com.options-pubsub-example.topic1', [counter], {}, options).then(
+         function (publication) {
+            console.log("Event published with publication ID " + publication.id);
+         }
+      );
 
       counter += 1;
-
-      console.log("events published");
    }, 1000);
 };
 

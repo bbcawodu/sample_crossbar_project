@@ -47,12 +47,12 @@ class Component(ApplicationSession):
 
         counter = 0
         while True:
-            print("publish: com.myapp.heartbeat")
-            self.publish(u'com.myapp.heartbeat')
+            print("publish: com.complex-pubsub-example.heartbeat")
+            self.publish(u'com.complex-pubsub-example.heartbeat')
 
             obj = {'counter': counter, 'foo': [1, 2, 3]}
-            print("publish: com.myapp.topic2", obj)
-            self.publish(u'com.myapp.topic2', random.randint(0, 100), 23,
+            print("publish: com.complex-pubsub-example.topic2", obj)
+            self.publish(u'com.complex-pubsub-example.topic2', random.randint(0, 100), 23,
                          c="Hello", d=obj)
 
             counter += 1

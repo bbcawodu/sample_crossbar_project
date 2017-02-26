@@ -24,8 +24,9 @@
 #
 ###############################################################################
 
-from os import environ
+from __future__ import print_function
 
+from os import environ
 from twisted.internet import reactor
 from twisted.internet.defer import inlineCallbacks
 
@@ -36,8 +37,8 @@ from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 class Component(ApplicationSession):
 
     """
-    An application component that subscribes and receives events
-    of no payload and of complex payload, and stops after 5 seconds.
+    An application component that subscribes and receives events,
+    and stop after having received 5 events.
     """
 
     @inlineCallbacks
@@ -46,20 +47,15 @@ class Component(ApplicationSession):
 
         self.received = 0
 
-        def on_heartbeat(details=None):
-            print("heartbeat (publication ID {})".format(details.publication))
+        def on_event(i, details=None):
+            msg = "Got event, publication ID {}, publisher {}: {}"
+            print(msg.format(details.publication, details.publisher, i))
+            self.received += 1
+            if self.received > 5:
+                self.leave()
 
-        yield self.subscribe(
-            on_heartbeat, u'com.complex-pubsub-example.heartbeat',
-            options=SubscribeOptions(details_arg='details')
-        )
-
-        def on_topic2(a, b, c=None, d=None):
-            print("Got event: {} {} {} {}".format(a, b, c, d))
-
-        yield self.subscribe(on_topic2, u'com.complex-pubsub-example.topic2')
-
-        reactor.callLater(5, self.leave)
+        yield self.subscribe(on_event, u'com.options-pubsub-example.topic1',
+                             options=SubscribeOptions(details_arg='details'))
 
     def onDisconnect(self):
         print("disconnected")
