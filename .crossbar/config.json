@@ -61,36 +61,15 @@
             "options": {
                 "pythonpath": [
                     ".."
-                ]
+                ],
+                "title": "PubSub Protocol examples crossbar-worker [container]"
             },
-            "components": [
-                {
-                    "type": "class",
-                    "classname": "examples.hello_pkg.AppSession",
-                    "realm": "realm1",
-                    "transport": {
-                        "type": "websocket",
-                        "endpoint": {
-                            "type": "tcp",
-                            "host": "127.0.0.1",
-                            "port": 8080
-                        },
-                        "url": "ws://127.0.0.1:8080/ws"
-                    }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
+            "id": "container_PubSub_Protocol_examples",
             "components": [
                 {
                     "type": "class",
                     "classname": "examples.pubsub_protocol.basic.backend.Component",
+                    "id": "component_PubSub_basic_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -101,20 +80,11 @@
                         },
                         "url": "ws://127.0.0.1:8080/ws"
                     }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
-            "components": [
+                },
                 {
                     "type": "class",
                     "classname": "examples.pubsub_protocol.complex.backend.Component",
+                    "id": "component_PubSub_complex_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -125,20 +95,11 @@
                         },
                         "url": "ws://127.0.0.1:8080/ws"
                     }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
-            "components": [
+                },
                 {
                     "type": "class",
                     "classname": "examples.pubsub_protocol.options.backend.Component",
+                    "id": "component_PubSub_options_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -149,20 +110,11 @@
                         },
                         "url": "ws://127.0.0.1:8080/ws"
                     }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
-            "components": [
+                },
                 {
                     "type": "class",
                     "classname": "examples.pubsub_protocol.unsubscribe.backend.Component",
+                    "id": "component_PubSub_unsubscribe_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -181,12 +133,15 @@
             "options": {
                 "pythonpath": [
                     ".."
-                ]
+                ],
+                "title": "Remote Process Call Protocol examples crossbar-worker [container]"
             },
+            "id": "container_Remote_Process_Call_Protocol_examples",
             "components": [
                 {
                     "type": "class",
                     "classname": "examples.rpc_protocol.time_service.backend.Component",
+                    "id": "component_RPC_time_service_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -197,20 +152,11 @@
                         },
                         "url": "ws://127.0.0.1:8080/ws"
                     }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
-            "components": [
+                },
                 {
                     "type": "class",
                     "classname": "examples.rpc_protocol.slow_square.backend.Component",
+                    "id": "component_RPC_slow_square_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -221,20 +167,11 @@
                         },
                         "url": "ws://127.0.0.1:8080/ws"
                     }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
-            "components": [
+                },
                 {
                     "type": "class",
                     "classname": "examples.rpc_protocol.arguments.backend.Component",
+                    "id": "component_RPC_arguments_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -245,20 +182,11 @@
                         },
                         "url": "ws://127.0.0.1:8080/ws"
                     }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
-            "components": [
+                },
                 {
                     "type": "class",
                     "classname": "examples.rpc_protocol.complex_result.backend.Component",
+                    "id": "component_RPC_complex_result_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -269,20 +197,11 @@
                         },
                         "url": "ws://127.0.0.1:8080/ws"
                     }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
-            "components": [
+                },
                 {
                     "type": "class",
                     "classname": "examples.rpc_protocol.errors.backend.Component",
+                    "id": "component_RPC_errors_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -293,20 +212,11 @@
                         },
                         "url": "ws://127.0.0.1:8080/ws"
                     }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
-            "components": [
+                },
                 {
                     "type": "class",
                     "classname": "examples.rpc_protocol.progressive_results.backend.Component",
+                    "id": "component_RPC_progressive_results_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
@@ -317,20 +227,11 @@
                         },
                         "url": "ws://127.0.0.1:8080/ws"
                     }
-                }
-            ]
-        },
-        {
-            "type": "container",
-            "options": {
-                "pythonpath": [
-                    ".."
-                ]
-            },
-            "components": [
+                },
                 {
                     "type": "class",
                     "classname": "examples.rpc_protocol.options.backend.Component",
+                    "id": "component_RPC_options_example",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
