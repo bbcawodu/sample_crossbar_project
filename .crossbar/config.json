@@ -258,7 +258,7 @@
             "components": [
                 {
                     "type": "class",
-                    "classname": "examples.rpc_protocol.complex_results.backend.Component",
+                    "classname": "examples.rpc_protocol.complex_result.backend.Component",
                     "realm": "realm1",
                     "transport": {
                         "type": "websocket",
