@@ -45,7 +45,7 @@ connection.onopen = function (session) {
          }
       }
 
-      session.subscribe('com.unsubscribe-pubsub-example.topic1', on_event).then(
+      session.subscribe('examples.pubsub.unsubscribe.topic1', on_event).then(
          function (subscription) {
             sub = subscription;
             console.log("Subscribed with subscription ID " + subscription.id);
