@@ -25,7 +25,7 @@ connection.onopen = function (session) {
    var counter = 0;
 
    setInterval(function () {
-      session.publish('com.unsubscribe-pubsub-example.topic1', [counter]);
+      session.publish('examples.pubsub.unsubscribe.topic1', [counter]);
       counter += 1;
       console.log("events published");
    }, 1000);

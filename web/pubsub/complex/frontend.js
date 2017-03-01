@@ -27,14 +27,14 @@ connection.onopen = function (session) {
       console.log("Got heartbeat (publication ID " + details.publication + ")");
    }
 
-   session.subscribe('com.complex-pubsub-example.heartbeat', on_heartbeat);
+   session.subscribe('examples.pubsub.complex.heartbeat', on_heartbeat);
 
 
    function on_topic2(args, kwargs) {
       console.log("Got event:", args, kwargs);
    }
 
-   session.subscribe('com.complex-pubsub-example.topic2', on_topic2);
+   session.subscribe('examples.pubsub.complex.topic2', on_topic2);
 
 
    setTimeout(function () {

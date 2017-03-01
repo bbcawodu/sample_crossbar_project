@@ -44,8 +44,8 @@ class Component(ApplicationSession):
 
         counter = 0
         while True:
-            print("publish: com.unsubscribe-pubsub-example.topic1", counter)
-            self.publish(u'com.unsubscribe-pubsub-example.topic1', counter)
+            print("publish: examples.pubsub.unsubscribe.topic1", counter)
+            self.publish(u'examples.pubsub.unsubscribe.topic1', counter)
             counter += 1
             yield sleep(1)
 

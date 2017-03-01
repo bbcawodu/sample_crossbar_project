@@ -30,10 +30,10 @@ connection.onopen = function (session) {
    var counter = 0;
 
    setInterval(function () {
-      session.publish('com.complex-pubsub-example.heartbeat');
+      session.publish('examples.pubsub.complex.heartbeat');
 
       var obj = {'counter': counter, 'foo': [1, 2, 3]};
-      session.publish('com.complex-pubsub-example.topic2', [randint(0, 100), 23], {c: "Hello", d: obj});
+      session.publish('examples.pubsub.complex.topic2', [randint(0, 100), 23], {c: "Hello", d: obj});
 
       counter += 1;
 

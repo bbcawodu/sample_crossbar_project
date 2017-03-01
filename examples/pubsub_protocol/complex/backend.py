@@ -47,21 +47,21 @@ class Component(ApplicationSession):
 
         counter = 0
         while True:
-            print("publish: com.complex-pubsub-example.heartbeat")
-            self.publish(u'com.complex-pubsub-example.heartbeat')
+            print("publish: examples.pubsub.complex.heartbeat")
+            self.publish(u'examples.pubsub.complex.heartbeat')
 
             obj = {'counter': counter, 'foo': [1, 2, 3]}
-            print("publish: com.complex-pubsub-example.topic2", obj)
-            self.publish(u'com.complex-pubsub-example.topic2', random.randint(0, 100), 23,
+            print("publish: examples.pubsub.complex.topic2", obj)
+            self.publish(u'examples.pubsub.complex.topic2', random.randint(0, 100), 23,
                          c="Hello", d=obj)
 
             counter += 1
             yield sleep(1)
 
 
-# if __name__ == '__main__':
-#     runner = ApplicationRunner(
-#         environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
-#         u"crossbardemo",
-#     )
-#     runner.run(Component)
+if __name__ == '__main__':
+    runner = ApplicationRunner(
+        environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
+        u"realm1",
+    )
+    runner.run(Component)

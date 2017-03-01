@@ -43,7 +43,7 @@ class Component(ApplicationSession):
     @inlineCallbacks
     def test(self):
         self.received = 0
-        self.sub = yield self.subscribe(self.on_event, u'com.unsubscribe-pubsub-example.topic1')
+        self.sub = yield self.subscribe(self.on_event, u'examples.pubsub.unsubscribe.topic1')
         print("Subscribed with subscription ID {}".format(self.sub.id))
 
     @inlineCallbacks

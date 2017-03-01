@@ -37,7 +37,7 @@ connection.onopen = function (session) {
       }
    }
 
-   session.subscribe('com.options-pubsub-example.topic1', on_event);
+   session.subscribe('examples.pubsub.options.topic1', on_event);
 };
 
 connection.open();

@@ -51,6 +51,7 @@ class Component(ApplicationSession):
             yield sleep(delay)
             returnValue(x * x)
 
+        # ApplicationSession.register can take functions which return deferreds as well as other python objects
         yield self.register(slowsquare, u'com.examples.rpc.slow-square.slowsquare')
 
         print("procedures registered")

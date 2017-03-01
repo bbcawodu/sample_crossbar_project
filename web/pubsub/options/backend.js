@@ -28,7 +28,7 @@ connection.onopen = function (session) {
 
       var options = {acknowledge: true};
 
-      session.publish('com.options-pubsub-example.topic1', [counter], {}, options).then(
+      session.publish('examples.pubsub.options.topic1', [counter], {}, options).then(
          function (publication) {
             console.log("Event published with publication ID " + publication.id);
          }

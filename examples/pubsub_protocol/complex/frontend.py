@@ -50,14 +50,14 @@ class Component(ApplicationSession):
             print("heartbeat (publication ID {})".format(details.publication))
 
         yield self.subscribe(
-            on_heartbeat, u'com.complex-pubsub-example.heartbeat',
+            on_heartbeat, u'examples.pubsub.complex.heartbeat',
             options=SubscribeOptions(details_arg='details')
         )
 
         def on_topic2(a, b, c=None, d=None):
             print("Got event: {} {} {} {}".format(a, b, c, d))
 
-        yield self.subscribe(on_topic2, u'com.complex-pubsub-example.topic2')
+        yield self.subscribe(on_topic2, u'examples.pubsub.complex.topic2')
 
         reactor.callLater(5, self.leave)
 
