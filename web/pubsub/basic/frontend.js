@@ -20,6 +20,8 @@ var connection = new autobahn.Connection({
    realm: 'realm1'}
 );
 
+console.log(wsuri);
+
 connection.onopen = function (session) {
 
    var received = 0;
