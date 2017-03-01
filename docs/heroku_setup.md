@@ -1,4 +1,4 @@
-http://crossbar.io/docs/Setup-on-Heroku/
+From: http://crossbar.io/docs/Setup-on-Heroku/
 
 Setup on Heroku
 
@@ -148,3 +148,29 @@ As you can see in above, the IP and port that Crossbar.io runs on is an internal
 
 When looking at the WebSocket network connection from the browser dev tools, you can again see from the headers sent in the initial WebSocket opening handshake that a proxy is in place:
 
+
+
+MY NOTES:
+
+When you create your local environment (virtualenv) and run the project locally, The crossbar config will read the now changed port value in the web transport of the router worker from your environment. Crossbar wont start if this value is not set. In order to set it do the following: (Taken from Heroku Docs)(https://devcenter.heroku.com/articles/heroku-local)
+
+Set up your local environment variables
+When running your app, you will typically use a set of config vars to capture the configuration of the app. For example: say your app uses S3 for image storage. You would want to store the credentials to S3 as config vars. If you’re running your app locally, you typically want to use a different S3 bucket than if you were running it in production.
+The .env file lets you capture all the config vars that you need in order to run your app locally. When you start your app using any of the heroku local commands, the .env file is read, and each name/value pair is inserted into the environment, to mimic the action of config vars.
+View your app’s config vars
+To view all of your app’s config vars, type heroku config.
+Look at the contents of your .env file
+$ cat .env
+Here’s an example .env file:
+S3_KEY=mykey
+S3_SECRET=mysecret
+Add a config var to your .env file
+Credentials and other sensitive configuration values should not be committed to source-control. In Git exclude the .env file with: echo .env >> .gitignore.
+
+To add a config var to your .env file, edit it and add a new name=value pair on a new line.
+Copy Heroku config vars to your local .env file
+Sometimes you may want to use the same config var in both local and Heroku environments. For each config var that you want to add to your .env file, use the following command:
+$ heroku config:get CONFIG-VAR-NAME -s  >> .env
+Do not commit the .env file to source control. It should only be used for local configuration. Update your .gitignore file to exclude the .env file.
+
+You can also set this value in your global environment file by echoing the port to the global environment file on your local system.
