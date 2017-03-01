@@ -1,15 +1,25 @@
-# 
+#  This Project is intended to help one familiarize themselves with WAMP (Web Application Messaging Protocol) network programming using Autobahn, Twisted, Python, and Javascript
 
-All Python application code is in `/.py`. The backend is called from JavaScript, which is in `/web/index.html`. (MUST ACCESS OVER HTTP NOT HTTPS for transports to work)
+# To get started, it is helpful to go through the setup of the project on a local machine, then on heroku. All using the README's and links as a guide
 
-[Crossbar (WAMP Router) Reference](http://crossbar.io)
 
-[Heroku Crossbar setup README](docs/heroku_setup.md)
+# WAMP
+[Web Application Messaging Protocol website](http://wamp-proto.org/)
 
+# Asynchronous programming
 [Introduction to asynchronous programming using deferreds README](docs/deferred_intro.md)
 
 [Deferred Reference README](docs/deferred_reference.md)
 
+# Autobahn
 [Autobahn Python Reference(WAMP and Websocket library for Python)](http://autobahn.ws/python)
 
 [Autobahn Javascript Reference(WAMP and Websocket library for Python)](http://autobahn.ws/js/)
+
+# Crossbar
+[Heroku Crossbar setup README](docs/heroku_setup.md)
+
+[Crossbar (WAMP Router) Reference](http://crossbar.io)
+
+# Examples
+[Autobahn WAMP Python and Javascript examples README](docs/WAMP_examples.md)
