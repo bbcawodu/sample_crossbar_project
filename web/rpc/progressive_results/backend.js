@@ -19,7 +19,7 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
@@ -52,7 +52,7 @@ connection.onopen = function (session) {
       return d.promise;
    }
 
-   session.register('com.examples.rpc.progressive_results.longop', longop).then(
+   session.register('examples.rpc.progressive_results.longop', longop).then(
       function (registration) {
          console.log("Procedure registered:", registration.id);
       },

@@ -65,6 +65,6 @@ class Component(ApplicationSession):
 if __name__ == '__main__':
     runner = ApplicationRunner(
         environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
-        u"realm1",
+        u"example_realm",
     )
     runner.run(Component)

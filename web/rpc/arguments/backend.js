@@ -19,7 +19,7 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
@@ -55,11 +55,11 @@ connection.onopen = function (session) {
 
    var dl = [];
 
-   dl.push(session.register('com.examples.rpc.arguments.ping', ping));
-   dl.push(session.register('com.examples.rpc.arguments.add2', add2));
-   dl.push(session.register('com.examples.rpc.arguments.stars', stars));
-   dl.push(session.register('com.examples.rpc.arguments.orders', orders));
-   dl.push(session.register('com.examples.rpc.arguments.arglen', arglen));
+   dl.push(session.register('examples.rpc.arguments.ping', ping));
+   dl.push(session.register('examples.rpc.arguments.add2', add2));
+   dl.push(session.register('examples.rpc.arguments.stars', stars));
+   dl.push(session.register('examples.rpc.arguments.orders', orders));
+   dl.push(session.register('examples.rpc.arguments.arglen', arglen));
 
    when.all(dl).then(
       function () {

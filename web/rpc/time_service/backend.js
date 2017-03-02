@@ -17,18 +17,18 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
 
    function utcnow() {
       console.log("Someone is calling me;)");
-      now = new Date();
+      var now = new Date();
       return now.toISOString();
    }
 
-   session.register('com.examples.rpc.timeservice.now', utcnow).then(
+   session.register('examples.rpc.timeservice.now', utcnow).then(
       function (registration) {
          console.log("Procedure registered:", registration.id);
       },

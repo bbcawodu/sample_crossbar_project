@@ -21,7 +21,7 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
@@ -29,7 +29,7 @@ connection.onopen = function (session) {
    var dl = [];
 
    var t1 = now();
-   dl.push(session.call('com.examples.rpc.slow-square.slowsquare', [3]).then(
+   dl.push(session.call('examples.rpc.slow-square.slowsquare', [3]).then(
       function (res) {
          var duration = now() - t1;
          console.log("Slow Square:", res, duration);
@@ -37,7 +37,7 @@ connection.onopen = function (session) {
    ));
 
    var t2 = now();
-   dl.push(session.call('com.examples.rpc.slow-square.square', [3]).then(
+   dl.push(session.call('examples.rpc.slow-square.square', [3]).then(
       function (res) {
          var duration = now() - t2;
          console.log("Quick Square:", res, duration);

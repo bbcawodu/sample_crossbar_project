@@ -60,23 +60,23 @@ class Component(ApplicationSession):
                 # this also will raise, if x < 0
                 return math.sqrt(x)
 
-        yield self.register(sqrt, u'com.examples.rpc_protocol.errors.sqrt')
+        yield self.register(sqrt, u'examples.rpc_protocol.errors.sqrt')
 
         # raising WAMP application exceptions
         ##
         def checkname(name):
             if name in ['foo', 'bar']:
-                raise ApplicationError(u"com.examples.rpc_protocol.errors.reserved")
+                raise ApplicationError(u"examples.rpc_protocol.errors.reserved")
 
             if name.lower() != name.upper():
                 # forward positional arguments in exceptions
-                raise ApplicationError(u"com.examples.rpc_protocol.errors.mixed_case", name.lower(), name.upper())
+                raise ApplicationError(u"examples.rpc_protocol.errors.mixed_case", name.lower(), name.upper())
 
             if len(name) < 3 or len(name) > 10:
                 # forward keyword arguments in exceptions
-                raise ApplicationError(u"com.examples.rpc_protocol.errors.invalid_length", min=3, max=10)
+                raise ApplicationError(u"examples.rpc_protocol.errors.invalid_length", min=3, max=10)
 
-        yield self.register(checkname, u'com.examples.rpc_protocol.errors.checkname')
+        yield self.register(checkname, u'examples.rpc_protocol.errors.checkname')
 
         # defining and automapping WAMP application exceptions
         ##
@@ -86,7 +86,7 @@ class Component(ApplicationSession):
             if a < b:
                 raise AppError1(b - a)
 
-        yield self.register(compare, u'com.examples.rpc_protocol.errors.compare')
+        yield self.register(compare, u'examples.rpc_protocol.errors.compare')
 
         print("procedures registered")
 
@@ -94,6 +94,6 @@ class Component(ApplicationSession):
 if __name__ == '__main__':
     runner = ApplicationRunner(
         environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
-        u"realm1",
+        u"example_realm",
     )
     runner.run(Component)

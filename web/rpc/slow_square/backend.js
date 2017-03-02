@@ -19,7 +19,7 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
@@ -30,7 +30,7 @@ connection.onopen = function (session) {
       return x * x;
    }
 
-   session.register('com.examples.rpc.slow-square.square', square);
+   session.register('examples.rpc.slow-square.square', square);
 
 
    // simulates a "slow" function or a function that
@@ -49,7 +49,7 @@ connection.onopen = function (session) {
       return d.promise;
    }
 
-   session.register('com.examples.rpc.slow-square.slowsquare', slowsquare).then(
+   session.register('examples.rpc.slow-square.slowsquare', slowsquare).then(
       function (registration) {
          console.log("Procedure registered:", registration.id);
       },

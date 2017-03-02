@@ -44,10 +44,10 @@ class Component(ApplicationSession):
         def on_event(val):
             print("Someone requested to square non-positive: {}".format(val))
 
-        yield self.subscribe(on_event, u'com.examples.rpc.options.square_on_nonpositive')
+        yield self.subscribe(on_event, u'examples.rpc.options.square_on_nonpositive')
 
         for val in [2, 0, -2]:
-            res = yield self.call(u'com.examples.rpc.options.square', val, options=CallOptions())
+            res = yield self.call(u'examples.rpc.options.square', val, options=CallOptions())
             print("Squared {} = {}".format(val, res))
 
         self.leave()
@@ -60,6 +60,6 @@ class Component(ApplicationSession):
 if __name__ == '__main__':
     runner = ApplicationRunner(
         environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
-        u"realm1",
+        u"example_realm",
     )
     runner.run(Component)

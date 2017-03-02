@@ -19,20 +19,23 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
 
+   // Application component that calls procedures which
+   // produce complex results (call results with more than one
+   // positional or keyword results) and showing how to access those.
    var dl = [];
 
-   dl.push(session.call('com.examples.rpc.complex_results.add_complex', [2, 3, 4, 5]).then(
+   dl.push(session.call('examples.rpc.complex_result.add_complex', [2, 3, 4, 5]).then(
       function (res) {
          console.log("Result: " + res.kwargs.c + " + " + res.kwargs.ci + "i");
       }
    ));
 
-   dl.push(session.call('com.examples.rpc.complex_results.split_name', ['Homer Simpson']).then(
+   dl.push(session.call('examples.rpc.complex_result.split_name', ['Homer Simpson']).then(
       function (res) {
          console.log("Forename: " + res.args[0] + ", Surname: " + res.args[1]);
       }

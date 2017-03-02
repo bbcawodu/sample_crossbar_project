@@ -46,16 +46,16 @@ class Component(ApplicationSession):
             print("square called from: {}".format(details.caller))
 
             if val < 0:
-                self.publish(u'com.examples.rpc.options.square_on_nonpositive', val)
+                self.publish(u'examples.rpc.options.square_on_nonpositive', val)
             elif val == 0:
                 if details.caller:
                     options = PublishOptions(exclude=[details.caller])
                 else:
                     options = None
-                self.publish(u'com.examples.rpc.options.square_on_nonpositive', val, options=options)
+                self.publish(u'examples.rpc.options.square_on_nonpositive', val, options=options)
             return val * val
 
-        yield self.register(square, u'com.examples.rpc.options.square', RegisterOptions(details_arg='details'))
+        yield self.register(square, u'examples.rpc.options.square', RegisterOptions(details_arg='details'))
 
         print("procedure registered")
 
@@ -63,6 +63,6 @@ class Component(ApplicationSession):
 if __name__ == '__main__':
     runner = ApplicationRunner(
         environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
-        u"realm1",
+        u"example_realm",
     )
     runner.run(Component)

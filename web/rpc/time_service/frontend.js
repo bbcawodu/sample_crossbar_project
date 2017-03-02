@@ -17,12 +17,12 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
 
-   session.call('com.examples.rpc.timeservice.now').then(
+   session.call('examples.rpc.timeservice.now').then(
       function (now) {
          console.log("Current time:", now);
          connection.close();

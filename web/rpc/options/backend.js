@@ -17,7 +17,7 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
@@ -27,18 +27,18 @@ connection.onopen = function (session) {
 
       var val = args[0];
       if (val < 0) {
-         session.publish('com.examples.rpc.options.square_on_nonpositive', [val]);
+         session.publish('examples.rpc.options.square_on_nonpositive', [val]);
       } else if (val === 0) {
          var options = {};
          if (details && details.caller) {
             options = {exclude: [details.caller]};
          }
-         session.publish('com.examples.rpc.options.square_on_nonpositive', [val], {}, options);
+         session.publish('examples.rpc.options.square_on_nonpositive', [val], {}, options);
       }
       return args[0] * args[0]
    }
 
-   session.register('com.examples.rpc.options.square', square).then(
+   session.register('examples.rpc.options.square', square).then(
       function (registration) {
          console.log("Procedure registered:", registration.id);
       },

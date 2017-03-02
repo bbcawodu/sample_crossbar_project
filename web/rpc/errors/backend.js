@@ -17,7 +17,7 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
@@ -30,12 +30,12 @@ connection.onopen = function (session) {
       var res = Math.sqrt(x);
       if (res !== res) {
          //throw "cannot take sqrt of negative";
-         throw new autobahn.Error('com.examples.rpc_protocol.errors.error', ['fuck'], {a: 23, b: 9});
+         throw new autobahn.Error('examples.rpc_protocol.errors.error', ['fuck'], {a: 23, b: 9});
       }
       return res;
    }
 
-   session.register('com.examples.rpc_protocol.errors.sqrt', sqrt).then(
+   session.register('examples.rpc_protocol.errors.sqrt', sqrt).then(
       function (registration) {
          console.log("Procedure registered:", registration.id);
       },

@@ -28,6 +28,31 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "name": "example_realm",
+                    "roles": [
+                        {
+                            "name": "anonymous",
+                            "permissions": [
+                                {
+                                    "uri": "",
+                                    "match": "prefix",
+                                    "allow": {
+                                        "call": true,
+                                        "register": true,
+                                        "publish": true,
+                                        "subscribe": true
+                                    },
+                                    "disclose": {
+                                        "caller": false,
+                                        "publisher": false
+                                    },
+                                    "cache": true
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "transports": [
@@ -70,7 +95,7 @@
                     "type": "class",
                     "classname": "examples.pubsub_protocol.basic.backend.Component",
                     "id": "component_PubSub_basic_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -85,7 +110,7 @@
                     "type": "class",
                     "classname": "examples.pubsub_protocol.complex.backend.Component",
                     "id": "component_PubSub_complex_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -100,7 +125,7 @@
                     "type": "class",
                     "classname": "examples.pubsub_protocol.options.backend.Component",
                     "id": "component_PubSub_options_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -115,7 +140,7 @@
                     "type": "class",
                     "classname": "examples.pubsub_protocol.unsubscribe.backend.Component",
                     "id": "component_PubSub_unsubscribe_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -142,7 +167,7 @@
                     "type": "class",
                     "classname": "examples.rpc_protocol.time_service.backend.Component",
                     "id": "component_RPC_time_service_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -157,7 +182,7 @@
                     "type": "class",
                     "classname": "examples.rpc_protocol.slow_square.backend.Component",
                     "id": "component_RPC_slow_square_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -172,7 +197,7 @@
                     "type": "class",
                     "classname": "examples.rpc_protocol.arguments.backend.Component",
                     "id": "component_RPC_arguments_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -187,7 +212,7 @@
                     "type": "class",
                     "classname": "examples.rpc_protocol.complex_result.backend.Component",
                     "id": "component_RPC_complex_result_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -202,7 +227,7 @@
                     "type": "class",
                     "classname": "examples.rpc_protocol.errors.backend.Component",
                     "id": "component_RPC_errors_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -217,7 +242,7 @@
                     "type": "class",
                     "classname": "examples.rpc_protocol.progressive_results.backend.Component",
                     "id": "component_RPC_progressive_results_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {
@@ -232,7 +257,7 @@
                     "type": "class",
                     "classname": "examples.rpc_protocol.options.backend.Component",
                     "id": "component_RPC_options_example",
-                    "realm": "realm1",
+                    "realm": "example_realm",
                     "transport": {
                         "type": "websocket",
                         "endpoint": {

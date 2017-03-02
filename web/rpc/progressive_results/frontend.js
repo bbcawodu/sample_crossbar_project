@@ -17,12 +17,12 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
 
-   session.call('com.examples.rpc.progressive_results.longop', [3], {}, {receive_progress: true}).then(
+   session.call('examples.rpc.progressive_results.longop', [3], {}, {receive_progress: true}).then(
       function (res) {
          console.log("Final:", res);
          connection.close();

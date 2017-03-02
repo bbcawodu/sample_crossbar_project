@@ -19,7 +19,7 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
@@ -29,7 +29,7 @@ connection.onopen = function (session) {
    var vals1 = [2, 0, -2];
    for (var i = 0; i < vals1.length; ++i) {
 
-      dl.push(session.call('com.examples.rpc_protocol.errors.sqrt', [vals1[i]]).then(
+      dl.push(session.call('examples.rpc_protocol.errors.sqrt', [vals1[i]]).then(
          function (res) {
             console.log("Result:", res);
          },

@@ -19,7 +19,7 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
@@ -28,14 +28,14 @@ connection.onopen = function (session) {
       console.log("Someone requested to square non-positive:", val);
    }
 
-   session.subscribe('com.examples.rpc.options.square_on_nonpositive', on_event);
+   session.subscribe('examples.rpc.options.square_on_nonpositive', on_event);
 
    var dl = [];
 
    var vals = [2, 0, -2];
    for (var i = 0; i < vals.length; ++i) {
 
-      dl.push(session.call('com.examples.rpc.options.square', [vals[i]], {}, {}).then(
+      dl.push(session.call('examples.rpc.options.square', [vals[i]], {}, {}).then(
          function (res) {
             console.log("Squared", res);
          },

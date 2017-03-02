@@ -17,17 +17,20 @@ if (document.location.origin == "file://") {
 
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 connection.onopen = function (session) {
+
+   // Application component that provides procedures which
+   // return complex results(call results with more than one positional or keyword results).
 
    function add_complex(args, kwargs) {
       console.log("Someone is calling me;)");
       return new autobahn.Result([], {c: args[0] + args[2], ci: args[1] + args[3]});
    }
 
-   session.register('com.examples.rpc.complex_results.add_complex', add_complex).then(
+   session.register('examples.rpc.complex_result.add_complex', add_complex).then(
       function (registration) {
          console.log("Procedure registered:", registration.id);
       },
@@ -40,7 +43,7 @@ connection.onopen = function (session) {
       return new autobahn.Result(args[0].split(" "));
    }
 
-   session.register('com.examples.rpc.complex_results.split_name', split_name).then(
+   session.register('examples.rpc.complex_result.split_name', split_name).then(
       function (registration) {
          console.log("Procedure registered:", registration.id);
       },

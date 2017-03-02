@@ -18,7 +18,7 @@ if (document.location.origin == "file://") {
 // Connect to crossbar router component via WAMP protocol
 var connection = new autobahn.Connection({
    url: wsuri,
-   realm: 'realm1'}
+   realm: 'example_realm'}
 );
 
 function randint(min, max) {

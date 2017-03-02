@@ -44,7 +44,7 @@ class Component(ApplicationSession):
         def square(x):
             return x * x
 
-        yield self.register(square, u'com.examples.rpc.slow-square.square')
+        yield self.register(square, u'examples.rpc.slow-square.square')
 
         @inlineCallbacks
         def slowsquare(x, delay=1):
@@ -52,7 +52,7 @@ class Component(ApplicationSession):
             returnValue(x * x)
 
         # ApplicationSession.register can take functions which return deferreds as well as other python objects
-        yield self.register(slowsquare, u'com.examples.rpc.slow-square.slowsquare')
+        yield self.register(slowsquare, u'examples.rpc.slow-square.slowsquare')
 
         print("procedures registered")
 
@@ -60,6 +60,6 @@ class Component(ApplicationSession):
 if __name__ == '__main__':
     runner = ApplicationRunner(
         environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
-        u"realm1",
+        u"example_realm",
     )
     runner.run(Component)

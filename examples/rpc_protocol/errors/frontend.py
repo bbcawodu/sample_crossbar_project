@@ -56,7 +56,7 @@ class Component(ApplicationSession):
         ##
         for x in [2, 0, -2]:
             try:
-                res = yield self.call(u'com.examples.rpc_protocol.errors.sqrt', x)
+                res = yield self.call(u'examples.rpc_protocol.errors.sqrt', x)
             except Exception as e:
                 print("Error: {} {}".format(e, e.args))
             else:
@@ -66,7 +66,7 @@ class Component(ApplicationSession):
         ##
         for name in ['foo', 'a', '*' * 11, 'Hello']:
             try:
-                res = yield self.call(u'com.examples.rpc_protocol.errors.checkname', name)
+                res = yield self.call(u'examples.rpc_protocol.errors.checkname', name)
             except ApplicationError as e:
                 print("Error: {} {} {} {}".format(e, e.error, e.args, e.kwargs))
             else:
@@ -77,7 +77,7 @@ class Component(ApplicationSession):
         self.define(AppError1)
 
         try:
-            yield self.call(u'com.examples.rpc_protocol.errors.compare', 3, 17)
+            yield self.call(u'examples.rpc_protocol.errors.compare', 3, 17)
         except AppError1 as e:
             print("Compare Error: {}".format(e))
 
@@ -92,6 +92,6 @@ class Component(ApplicationSession):
 if __name__ == '__main__':
     runner = ApplicationRunner(
         environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://127.0.0.1:8080/ws"),
-        u"realm1",
+        u"example_realm",
     )
     runner.run(Component)
