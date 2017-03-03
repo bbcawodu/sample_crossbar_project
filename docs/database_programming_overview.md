@@ -67,3 +67,27 @@ Parts Taken from: https://devcenter.heroku.com/articles/heroku-postgresql#local-
   is easier
   
 - You can now access the database programatically through psycopg2 using the DATABASE_URL environment variable
+
+### Object-Relational Mapper database adapter
+
+Parts taken from: http://crossbar.io/docs/Database-Programming-with-PostgreSQL/
+
+- If you are looking for an object-relational database adapter, there obviously is SQLAlchemy. However, the latter is
+  exposing a synchronous API and does not blend well with the asynchronous frameworks. However, there is Twistar, a
+  completely new project for Twisted which can be used with any Twisted supported relational database and provides a
+  object-relational API.
+    - NOTES:
+    - Excerpt taken from: http://findingscience.com/twistar/doc/examples.html
+        - Twistar does not provide DB creation / migration functionality beyond asynchronously making SQL queries.
+    - This is okay for our purposes though because DB table creation and migration does not need to be done asynchronously
+      by design. We can first make any DB schema changes that our application code will depend on in a synchronous(blocking)
+      manner and then use an asynchronous library of our choice(twistar) to make queries create/update/delete/etc rows from
+      our database connected through psycopg2.
+        - We will use sqlalchemy-migrate for DB creation / migration functionality
+            - Docs: https://sqlalchemy-migrate.readthedocs.io/en/latest/
+            - DB schema versioning workflow: https://sqlalchemy-migrate.readthedocs.io/en/latest/versioning.html
+        - We will use twistar to provide a non-blocking interface to our relational database.
+            - Home: http://findingscience.com/twistar/index.html
+            - Docs: http://findingscience.com/twistar/doc/
+            - twistar package info: http://findingscience.com/twistar/apidoc/twistar.html
+            - Simple examples: http://findingscience.com/twistar/doc/examples.html
