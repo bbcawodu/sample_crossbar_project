@@ -269,6 +269,33 @@
                     }
                 }
             ]
+        },
+        {
+            "type": "container",
+            "options": {
+                "pythonpath": [
+                    ".."
+                ],
+                "title": "Database component examples crossbar-worker [container]"
+            },
+            "id": "container_db_component_examples",
+            "components": [
+                {
+                    "type": "class",
+                    "classname": "examples.twisted_database_component.backend.MyDatabaseComponent",
+                    "id": "component_db_component_backend_example",
+                    "realm": "example_realm",
+                    "transport": {
+                        "type": "websocket",
+                        "endpoint": {
+                            "type": "tcp",
+                            "host": "127.0.0.1",
+                            "port": 8080
+                        },
+                        "url": "ws://127.0.0.1:8080/ws"
+                    }
+                }
+            ]
         }
     ]
 }
