@@ -86,8 +86,9 @@ Parts taken from: http://crossbar.io/docs/Database-Programming-with-PostgreSQL/
         - We will use sqlalchemy-migrate for DB creation / migration functionality
             - Docs: https://sqlalchemy-migrate.readthedocs.io/en/latest/
             - DB schema versioning workflow: https://sqlalchemy-migrate.readthedocs.io/en/latest/versioning.html
-        - We will use twistar to provide a non-blocking interface to our relational database.
+        - We will use twistar to provide a non-blocking Object relational mapping interface to our relational database.
             - Home: http://findingscience.com/twistar/index.html
             - Docs: http://findingscience.com/twistar/doc/
             - twistar package info: http://findingscience.com/twistar/apidoc/twistar.html
             - Simple examples: http://findingscience.com/twistar/doc/examples.html
+            
