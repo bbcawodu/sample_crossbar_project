@@ -16,11 +16,14 @@ Heroku also has very thorough walkthroughs for creating apps using a variety of 
 
 Installing a Crossbar.io project on Heroku is pretty straightforward once you're familiar with the above but here is a step by step guide in case you need some extra guidance.
 
+```
 Create project folder
 Create virtual environment (Optional but strongly recommended): You can find out more about virtual environments here to create a virtual environment:
 Install virtual env: If you haven't already, install virtualenv through pip: pip install virtualenv
 Go to your project: Open a terminal window and navigate to your project folder: cd my_project
 Create the virtual environment: virtualenv venv
+    - If you have both python 2 and 3 installed, you can specify the version like the following:
+        - virtualenv -p /usr/bin/python2.7 <virtual environment name(venv)>
 Activate the virtual environment: source venv/bin/activate
 Install Crossbar: pip install crossbar
 Create project (hello:python template): crossbar init --template hello:python
@@ -37,6 +40,7 @@ Deploy: to deploy and start the app you push it using Git and Heroku should take
 You can check the logs of your application once it's deployed by using the logs command: heroku logs --tail
 Point your browser to the address that Heroku assigned to your app and you should see the Hello WAMP! page (see the hello:python template for more information). (NOTE: Use http instead of https to access the page.)
 Crossbar.io configuration¶
+```
 
 Crossbar.io can create a complete node configuration and "Hello, world". Here is how you would create a Python based "Hello, world" application:
 
@@ -51,6 +55,19 @@ Because of this, we need to modify the Crossbar.io node configuration:
 
 In the Web transport, insted of 8080, we configure the value "$PORT". This will make Crossbar.io read the value dynamically upon startup from the environment variable.
 Since the main transport is now listening on a dynamic port, we start a second (WebSocket) transport on our router on fixed port 9000 for the container worker to connect to
+    
+    - In order to run your crossbar project locally, you need to set the PORT environment variable. There are several approaches
+      towards accomplishing this, I will outline 2 below
+      - (PREFERRED METHOD) Configure virtual environment activate script to set and unset the PORT environment variable on
+        activation and deactivation respectively
+        - open venv/bin/activate
+        - Add the folllowing the the end of the script:
+            - export PORT='9000'
+                -This sets the PORT environment variable when the virtual environment activates
+        - Add the following at the end of the deactivate () {} function
+            - unset PORT
+                - This unsets the PORT environment variable when the virtual environment is deactivated
+     - Second method is outlined in the NOTES section
 Here is a complete, working configuration:
 (This config is outdated. Uses version 1 when version 2 is required)
 
@@ -150,8 +167,9 @@ When looking at the WebSocket network connection from the browser dev tools, you
 
 
 
-MY NOTES:
+NOTES:
 
+```
 When you create your local environment (virtualenv) and run the project locally, The crossbar config will read the now changed port value in the web transport of the router worker from your environment. Crossbar wont start if this value is not set. In order to set it do the following: (Taken from Heroku Docs)(https://devcenter.heroku.com/articles/heroku-local)
 
 Set up your local environment variables
@@ -174,3 +192,4 @@ $ heroku config:get CONFIG-VAR-NAME -s  >> .env
 Do not commit the .env file to source control. It should only be used for local configuration. Update your .gitignore file to exclude the .env file.
 
 You can also set this value in your global environment file by echoing the port to the global environment file on your local system.
+```

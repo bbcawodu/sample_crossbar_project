@@ -60,8 +60,16 @@ Parts Taken from: https://devcenter.heroku.com/articles/heroku-postgresql#local-
     - Exit the postgres command line tool with the following command
         - '\q'
     - To access the database using a database url environment variable that is normally set by heroku when deployed,
-      set it globally or locally using the following format:
-        - DATABASE_URL="postgres://<username>:<password>@localhost:<port>/<database name>"
+      set it globally or locally by doing the following:
+      - (PREFERRED METHOD) Configure virtual environment activate script to set and unset the PORT environment variable on
+        activation and deactivation respectively
+        - open venv/bin/activate
+            - Add the folllowing the the end of the script:
+                - export DATABASE_URL='postgres://<username>:<password>@localhost:<port>/<database name>'
+                    - This sets the DATABASE_URL environment variable when the virtual environment activates
+            - Add the following at the end of the deactivate () {} function
+                - unset DATABASE_URL
+                    - This unsets the DATABASE_URL environment variable when the virtual environment is deactivated
         
 - To provision a deployment database on Heroku, Use the Dashboard or the Heroku Toolbelt command line tool, Dashboard
   is easier
@@ -79,14 +87,18 @@ Parts taken from: http://crossbar.io/docs/Database-Programming-with-PostgreSQL/
     - NOTES:
     - Excerpt taken from: http://findingscience.com/twistar/doc/examples.html
         - Twistar does not provide DB creation / migration functionality beyond asynchronously making SQL queries.
-    - This is okay for our purposes though because DB table creation and migration does not need to be done asynchronously
+    - This is okay for our purposes though, because DB table creation and migration does not need to be done asynchronously
       by design. We can first make any DB schema changes that our application code will depend on in a synchronous(blocking)
       manner and then use an asynchronous library of our choice(twistar) to make queries create/update/delete/etc rows from
       our database connected through psycopg2.
-        - We will use sqlalchemy-migrate for DB creation / migration functionality
-            - Docs: https://sqlalchemy-migrate.readthedocs.io/en/latest/
-            - DB schema versioning workflow: https://sqlalchemy-migrate.readthedocs.io/en/latest/versioning.html
-        - We will use twistar to provide a non-blocking Object relational mapping interface to our relational database.
+        - We will use alembic for DB schema creation / migration functionality and SQLAlchemy ORM Models to create/change the DB Schema
+            - [Alembic and SQLAlchemy Tutorial README](docs/Alembic_SQLAlchemy_tutorial.md)
+            - Docs: http://alembic.zzzcomputing.com/en/latest/
+            - DB schema changes with Alembic through manual creation of migrations: http://alembic.zzzcomputing.com/en/latest/tutorial.html
+            - DB schema changes with Alembic through auto generate migrations from SQLAlchemy ORM models:
+                - Tutorial to create ORM models through SQLAlchemy: http://docs.sqlalchemy.org/en/latest/orm/tutorial.html
+                - Tutorial to autogenerate migrations from SQLAlchemy models: http://alembic.zzzcomputing.com/en/latest/autogenerate.html
+        - We will use twistar to provide a non-blocking Object relational mapping interface to our relational database (DIFFERENT MODELS FROM THOSE USED TO CREATE AND CHANGE DB SCHEMA).
             - Home: http://findingscience.com/twistar/index.html
             - Docs: http://findingscience.com/twistar/doc/
             - twistar package info: http://findingscience.com/twistar/apidoc/twistar.html
