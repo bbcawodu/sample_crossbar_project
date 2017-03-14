@@ -200,6 +200,10 @@
   ```
   
   - Change the variable target_metadata to the metadata attribute of the imported declarative base class.
+  - In order for Alembic to access your project's SQLAlchemy models package while running the virtual environment on
+    your local machine, your project folder must be added to the PYTHONPATH. To do this, add the following line to the
+    end of your virtual environment's activate script.
+    ```export PYTHONPATH="${PYTHONPATH:+$PYTHONPATH:}/<project folder absolute path>"```
   
 - You are now ready to use Alembic's auto generate feature. To do so run the following command:
     ```alembic revision --autogenerate -m "<migration name>"```

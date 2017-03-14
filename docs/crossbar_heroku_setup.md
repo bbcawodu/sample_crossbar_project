@@ -193,3 +193,8 @@ Do not commit the .env file to source control. It should only be used for local 
 
 You can also set this value in your global environment file by echoing the port to the global environment file on your local system.
 ```
+
+- More Docs:
+    - http://crossbar.io/docs/Programming-Guide/
+    - Web Service Gateway Interface Guide: http://crossbar.io/docs/WSGI-Host-Service/
+    - Crossbar admin Docs: http://crossbar.io/docs/Administration/

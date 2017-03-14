@@ -17,7 +17,7 @@
 [Autobahn Javascript Reference(WAMP and Websocket library for Python)](http://autobahn.ws/js/)
 
 ### Crossbar
-[Heroku Crossbar setup README](docs/heroku_setup.md)
+[Heroku Crossbar setup README](docs/crossbar_heroku_setup.md)
 
 [Crossbar (WAMP Router) Reference](http://crossbar.io)
 
