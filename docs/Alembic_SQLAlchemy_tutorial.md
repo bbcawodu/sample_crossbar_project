@@ -4,7 +4,7 @@
 ### Alembic Migration Environment creation and configuration.
 
 - Change to the root directory of the crossbar project and use the following command:
-    ``` alembic init --template generic <directory name>```
+    ``` alembic init --template generic <alembic_directory name>```
     - This will create a directory with the files for a generic single-database configuration migration environment
     - The directory structure will look like:
     

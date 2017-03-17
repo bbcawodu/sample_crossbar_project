@@ -77,25 +77,6 @@ class Component(ApplicationSession):
 
     @inlineCallbacks
     def inline_add_user(self, first_name, last_name, age):
-        # class User(DBObject):
-        #     pass
-        #
-        # def done(user):
-        #     print("A user has just been saved with id: %i" % user.id)
-        #     # return [user.id, user.first_name, user.last_name, user.age]
-        #     return CallResult(id=user.id, first_name=user.first_name, last_name=user.last_name, age=user.age)
-        #
-        # u = User()
-        # u.first_name = first_name
-        # u.last_name = last_name
-        # u.age = age
-        #
-        # # Asynchronous call, returns a deferred
-        # d = u.save()
-        # result = d.addCallback(done)
-
-        # return CallResult(id=result[0], first_name=result[1], last_name=result[2], age=result[3])
-
         class User(DBObject):
             pass
 
