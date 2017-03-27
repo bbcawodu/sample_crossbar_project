@@ -72,7 +72,15 @@
                     "paths": {
                        "/": {
                           "type": "static",
-                          "directory": "../web"
+                          "directory": "../index"
+                       },
+                        "jsexamples": {
+                          "type": "static",
+                          "directory": "../jsexamples"
+                       },
+                        "staticfiles": {
+                          "type": "static",
+                          "directory": "../staticfiles"
                        },
                        "ws": {
                           "type": "websocket"
