@@ -71,9 +71,10 @@
                     },
                     "paths": {
                        "/": {
-                          "type": "static",
-                          "directory": "../index"
-                       },
+                         "type": "wsgi",
+                         "module": "microblog",
+                         "object": "app"
+                      },
                         "jsexamples": {
                           "type": "static",
                           "directory": "../jsexamples"

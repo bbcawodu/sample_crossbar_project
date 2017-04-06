@@ -7,10 +7,12 @@
 
 ### psql commands
 
-- ```\dt```
+- ```\dt;```
     - list all tables for the current db
-- ```\d+ <table name>```
-    - list all columns for the given db
+- ```\d+ <table name>;```
+    - list all columns for the given table
+-```TABLE <table name>;```
+    - list all rows for given table
     
 ### Heroku Postgres Addon commands
 
